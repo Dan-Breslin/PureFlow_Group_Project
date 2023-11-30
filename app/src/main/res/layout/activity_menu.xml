@@ -6,4 +6,121 @@
     android:layout_height="match_parent"
     tools:context=".Menu">
 
+    <Button
+        android:id="@+id/btn_WebView6"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:text="NI View 2"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/btn_WebView7" />
+
+    <Button
+        android:id="@+id/btn_WebView4"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="17dp"
+        android:text="NI View 1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_WebView5"
+        app:layout_constraintEnd_toEndOf="@+id/btn_WebView7"
+        app:layout_constraintTop_toBottomOf="@+id/btn_WebView3" />
+
+    <Button
+        android:id="@+id/btn_WebView1"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="21dp"
+        android:text="NI View 1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_WebView2"
+        app:layout_constraintEnd_toEndOf="@+id/btn_WebView2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_LinkServices" />
+
+    <Button
+        android:id="@+id/btn_WebView3"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="16dp"
+        android:text="NI View 1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_WebView4"
+        app:layout_constraintStart_toStartOf="@+id/btn_WebView4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_WebView2" />
+
+    <Button
+        android:id="@+id/btn_WebView2"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="NI View 1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_WebView3"
+        app:layout_constraintStart_toStartOf="@+id/btn_WebView3"
+        app:layout_constraintTop_toBottomOf="@+id/btn_WebView1" />
+
+    <Button
+        android:id="@+id/btn_WebView7"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="NI View 1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_WebView6"
+        app:layout_constraintStart_toStartOf="@+id/btn_WebView6"
+        app:layout_constraintTop_toBottomOf="@+id/btn_WebView5" />
+
+    <Button
+        android:id="@+id/btn_WebView5"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:text="NI View 1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_WebView7"
+        app:layout_constraintStart_toStartOf="@+id/btn_WebView4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_WebView4" />
+
+    <Button
+        android:id="@+id/btn_LinkServices"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:text="Service Updates"
+        app:layout_constraintBottom_toTopOf="@+id/btn_WebView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="NI Water Links"
+        android:textColor="#673AB7"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_WebView6" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_LinkServices"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pureflowgrouplogo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

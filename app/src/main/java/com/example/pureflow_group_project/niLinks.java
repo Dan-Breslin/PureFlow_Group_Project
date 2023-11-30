@@ -4,20 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.Button;
+import android.webkit.WebView;
 
-public class Menu extends AppCompatActivity {
+public class niLinks extends AppCompatActivity {
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_ni_links);
 
-        Button linksService;
-
-        linksService = (Button) findViewById(R.id.btn_LinkServices);
-
-
+        WebView webView = new WebView(this);
+        setContentView(webView);
+        webView.loadUrl("https://www.google.com");
     }
 }
