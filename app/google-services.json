@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "752515542853",
+    "firebase_url": "https://pureflow-project-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "pureflow-project",
+    "storage_bucket": "pureflow-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752515542853:android:da24f83194922553e7982c",
+        "android_client_info": {
+          "package_name": "com.example.pureflow_group_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752515542853-nqet4tn8hivj6bs4o600mkuth7jtc1am.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pureflow_group_project",
+            "certificate_hash": "5105ed914f85540287a49e9d1eed5930f34abd6a"
+          }
+        },
+        {
+          "client_id": "752515542853-1fsiaf7siqvcg7e72m7smv6mcue1s94j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsmBJXFRe22xHb9MdR55FEGVaQnKhefMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "752515542853-1fsiaf7siqvcg7e72m7smv6mcue1s94j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
