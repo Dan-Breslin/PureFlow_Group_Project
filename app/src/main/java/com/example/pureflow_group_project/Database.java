@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -26,10 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database extends AppCompatActivity {
-    EditText name_Input, lat_Input, lon_Input, lvl_Input;
-    TextView test2, res_No;
+    EditText name_Input, lat_Input, lon_Input, lvl_Input, inpLat, inpLon;
+    TextView test2, test;
     Button add, search;
     ListView myListView;
+
+    double distance1 = 0, distance2=0;
 
     DatabaseReference resdbRef;
     List<Reservoirs> reservoirsList;
@@ -53,6 +56,9 @@ public class Database extends AppCompatActivity {
         lon_Input = (EditText) findViewById(R.id.eText_Long);
         lvl_Input = (EditText) findViewById(R.id.eText_Levels);
         test2 = (TextView) findViewById(R.id.test2);
+        test = (TextView) findViewById(R.id.test);
+        inpLat = (EditText) findViewById(R.id.testInpLat);
+        inpLon = (EditText) findViewById(R.id.testInpLon);
 
         // Buttons
         add = (Button) findViewById(R.id.btn_InputRes);
@@ -83,9 +89,32 @@ public class Database extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // Find instance of Reservoirs with ID and display its level
-                test2.setText(String.valueOf(reservoirsList.get(1).getLvl()));
+                Location firstLocation = new Location("");
+                Location secondLocation = new Location("");
+
+                firstLocation.setLatitude(Double.parseDouble(inpLat.getText().toString()));
+                firstLocation.setLongitude(Double.parseDouble(inpLon.getText().toString()));
+
+
+                for (int i = 0; i < reservoirsList.size(); i++) {
+
+                    secondLocation.setLatitude(reservoirsList.get(i).getLat());
+                    secondLocation.setLongitude(reservoirsList.get(i).getLon());
+                    if(distance1 == 0 && distance2 == 0){
+                        distance1 = firstLocation.distanceTo(secondLocation);
+                        distance2 = firstLocation.distanceTo(secondLocation);
+                    }
+                    else {
+                        if (firstLocation.distanceTo(secondLocation) < distance1) {
+                            distance2 = distance1;
+                            distance1 = firstLocation.distanceTo(secondLocation);
+                        } else if (firstLocation.distanceTo(secondLocation) < distance2) {
+                            distance2 = firstLocation.distanceTo(secondLocation);
+                        }
+                    }
+                }
             }
+
         });
 
     }
@@ -107,6 +136,19 @@ public class Database extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void testLocation() {
+
+        Location firstLocation = new Location("");
+        firstLocation.setLatitude(Double.parseDouble(inpLat.getText().toString()));
+        firstLocation.setLongitude(Double.parseDouble(inpLon.getText().toString()));
+
+        Location secondLocation = new Location("");
+        secondLocation.setLatitude(reservoirsList.get(1).getLat());
+        secondLocation.setLongitude(reservoirsList.get(1).getLon());
+
+        double temp = firstLocation.distanceTo(secondLocation);
     }
 
 }

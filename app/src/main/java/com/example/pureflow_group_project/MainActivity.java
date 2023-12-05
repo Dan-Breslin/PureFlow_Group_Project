@@ -72,45 +72,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        data_Input = (EditText) findViewById(R.id.etxt_Name);
-//        data_output = (TextView) findViewById(R.id.tView_Result);
-//
-//        add = (Button) findViewById(R.id.btn_Add);
-//        add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String data = data_Input.getText().toString();
-//                myRef.setValue(data);
-//            }
-//        });
-//
-//        remove = (Button) findViewById(R.id.btn_Remove);
-//        remove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                myRef.removeValue();
-//            }
-//        });
-//
-//        get = (Button) findViewById(R.id.btn_Get);
-//        get.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                myRef.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        String dbOutput = snapshot.getValue(String.class);
-//                        data_output.setText(dbOutput);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//                        Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        });
-
     }
 
     private void createSignInIntent() {
