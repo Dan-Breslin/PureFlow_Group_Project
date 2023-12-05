@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "752515542853-j1c4srnlal06nvabfd26gdi4vdl6dnrt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pureflow_group_project",
+            "certificate_hash": "52a11466f13e911ad4cf48efaceedd5413fdebb4"
+          }
+        },
+        {
           "client_id": "752515542853-nqet4tn8hivj6bs4o600mkuth7jtc1am.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

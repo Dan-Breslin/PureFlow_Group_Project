@@ -13,6 +13,10 @@ public class Reservoirs {
         this.lvl = lvl;
     }
 
+    // Blank Constructor Needed for Firebase Database
+    public Reservoirs() {
+    }
+
     public String getName() {
         return name;
     }
@@ -28,4 +32,5 @@ public class Reservoirs {
     public double getLvl() {
         return lvl;
     }
+
 }

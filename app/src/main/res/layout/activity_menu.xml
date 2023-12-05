@@ -7,95 +7,98 @@
     tools:context=".Menu">
 
     <Button
-        android:id="@+id/btn_WebView6"
+        android:id="@+id/btn_LinkSelService"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:text="NI View 2"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Self-Service Portal"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/btn_WebView7" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_LinkCapacity" />
 
     <Button
-        android:id="@+id/btn_WebView4"
+        android:id="@+id/btn_LinkReservoirInfo"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="17dp"
-        android:text="NI View 1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_WebView5"
-        app:layout_constraintEnd_toEndOf="@+id/btn_WebView7"
-        app:layout_constraintTop_toBottomOf="@+id/btn_WebView3" />
+        android:text="Reservoir Info"
+        app:layout_constraintBottom_toTopOf="@+id/btn_LinkWaterCalc"
+        app:layout_constraintEnd_toEndOf="@+id/btn_LinkWaterCalc"
+        app:layout_constraintStart_toStartOf="@+id/btn_LinkWaterCalc"
+        app:layout_constraintTop_toBottomOf="@+id/btn_LinkResMap" />
 
     <Button
-        android:id="@+id/btn_WebView1"
+        android:id="@+id/btn_LinkQuality"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="21dp"
-        android:text="NI View 1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_WebView2"
-        app:layout_constraintEnd_toEndOf="@+id/btn_WebView2"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="19dp"
+        android:text="Water Quality"
+        app:layout_constraintBottom_toTopOf="@+id/btn_LinkProjects"
+        app:layout_constraintEnd_toEndOf="@+id/btn_LinkProjects"
+        app:layout_constraintStart_toStartOf="@+id/btn_LinkProjects"
         app:layout_constraintTop_toBottomOf="@+id/btn_LinkServices" />
 
     <Button
-        android:id="@+id/btn_WebView3"
+        android:id="@+id/btn_LinkResMap"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        android:text="NI View 1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_WebView4"
-        app:layout_constraintStart_toStartOf="@+id/btn_WebView4"
-        app:layout_constraintTop_toBottomOf="@+id/btn_WebView2" />
+        android:text="Reservoir Map"
+        app:layout_constraintBottom_toTopOf="@+id/btn_LinkReservoirInfo"
+        app:layout_constraintEnd_toEndOf="@+id/btn_LinkReservoirInfo"
+        app:layout_constraintStart_toStartOf="@+id/btn_LinkReservoirInfo"
+        app:layout_constraintTop_toBottomOf="@+id/btn_LinkProjects" />
 
     <Button
-        android:id="@+id/btn_WebView2"
+        android:id="@+id/btn_LinkProjects"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="17dp"
-        android:text="NI View 1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_WebView3"
-        app:layout_constraintStart_toStartOf="@+id/btn_WebView3"
-        app:layout_constraintTop_toBottomOf="@+id/btn_WebView1" />
+        android:text="Projects in Area"
+        app:layout_constraintBottom_toTopOf="@+id/btn_LinkResMap"
+        app:layout_constraintEnd_toEndOf="@+id/btn_LinkResMap"
+        app:layout_constraintStart_toStartOf="@+id/btn_LinkResMap"
+        app:layout_constraintTop_toBottomOf="@+id/btn_LinkQuality" />
 
     <Button
-        android:id="@+id/btn_WebView7"
+        android:id="@+id/btn_LinkCapacity"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="17dp"
-        android:text="NI View 1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_WebView6"
-        app:layout_constraintStart_toStartOf="@+id/btn_WebView6"
-        app:layout_constraintTop_toBottomOf="@+id/btn_WebView5" />
+        android:text="Wastewater Info"
+        app:layout_constraintBottom_toTopOf="@+id/btn_LinkSelService"
+        app:layout_constraintEnd_toEndOf="@+id/btn_LinkSelService"
+        app:layout_constraintStart_toStartOf="@+id/btn_LinkSelService"
+        app:layout_constraintTop_toBottomOf="@+id/btn_LinkWaterCalc" />
 
     <Button
-        android:id="@+id/btn_WebView5"
+        android:id="@+id/btn_LinkWaterCalc"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="21dp"
-        android:text="NI View 1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_WebView7"
-        app:layout_constraintStart_toStartOf="@+id/btn_WebView4"
-        app:layout_constraintTop_toBottomOf="@+id/btn_WebView4" />
+        android:text="Water Calculator"
+        app:layout_constraintBottom_toTopOf="@+id/btn_LinkCapacity"
+        app:layout_constraintEnd_toEndOf="@+id/btn_LinkCapacity"
+        app:layout_constraintStart_toStartOf="@+id/btn_LinkCapacity"
+        app:layout_constraintTop_toBottomOf="@+id/btn_LinkReservoirInfo" />
 
     <Button
         android:id="@+id/btn_LinkServices"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="17dp"
         android:text="Service Updates"
-        app:layout_constraintBottom_toTopOf="@+id/btn_WebView1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_LinkQuality"
+        app:layout_constraintEnd_toEndOf="@+id/btn_LinkQuality"
+        app:layout_constraintStart_toStartOf="@+id/btn_LinkQuality"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
@@ -109,17 +112,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_WebView6" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_LinkSelService" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
+        android:layout_width="185dp"
+        android:layout_height="138dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="11dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_LinkServices"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_LinkServices"
+        app:layout_constraintStart_toStartOf="@+id/btn_LinkServices"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pureflowgrouplogo" />
 
