@@ -28,11 +28,12 @@ import java.util.List;
 
 public class Database extends AppCompatActivity {
     EditText name_Input, lat_Input, lon_Input, lvl_Input, inpLat, inpLon;
-    TextView test2, test;
-    Button add, search;
+    TextView test;
+    Button add, checkDist, edit;
     ListView myListView;
 
     double distance1 = 0, distance2=0;
+    int locTracker=0;
 
     DatabaseReference resdbRef;
     List<Reservoirs> reservoirsList;
@@ -45,7 +46,7 @@ public class Database extends AppCompatActivity {
 
         // Arrays & Lists
         reservoirsList = new ArrayList<>();
-        myListView = findViewById(R.id.listView1);
+        myListView = findViewById(R.id.listView);
 
         // Firebase Database connection
        resdbRef = FirebaseDatabase.getInstance("https://pureflow-project-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("Reservoirs");
@@ -55,14 +56,14 @@ public class Database extends AppCompatActivity {
         lat_Input = (EditText) findViewById(R.id.eText_Lat);
         lon_Input = (EditText) findViewById(R.id.eText_Long);
         lvl_Input = (EditText) findViewById(R.id.eText_Levels);
-        test2 = (TextView) findViewById(R.id.test2);
         test = (TextView) findViewById(R.id.test);
         inpLat = (EditText) findViewById(R.id.testInpLat);
         inpLon = (EditText) findViewById(R.id.testInpLon);
 
         // Buttons
         add = (Button) findViewById(R.id.btn_InputRes);
-        search = (Button) findViewById(R.id.btn_Search);
+        checkDist = (Button) findViewById(R.id.btn_Search);
+        edit = (Button) findViewById(R.id.btn_EditRes);
 
         // Populate Array with Reservoirs from Firebase Database
         populateResData();
@@ -70,8 +71,8 @@ public class Database extends AppCompatActivity {
         // Add Reservoirs to Firebase Database on button click
         add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
 
+            public void onClick(View view) {
                 String name = name_Input.getText().toString();
                 double lat = Double.parseDouble(lat_Input.getText().toString());
                 double lon = Double.parseDouble(lon_Input.getText().toString());
@@ -80,41 +81,24 @@ public class Database extends AppCompatActivity {
                 Reservoirs reservoirs = new Reservoirs(name,lat,lon,level);
                 resdbRef.push().setValue(reservoirs);
 
-                populateResData();
             }
         });
 
         // Search Reservoirs in Firebase Database on button click
-        search.setOnClickListener(new View.OnClickListener() {
+        checkDist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Location firstLocation = new Location("");
-                Location secondLocation = new Location("");
-
-                firstLocation.setLatitude(Double.parseDouble(inpLat.getText().toString()));
-                firstLocation.setLongitude(Double.parseDouble(inpLon.getText().toString()));
-
-
-                for (int i = 0; i < reservoirsList.size(); i++) {
-
-                    secondLocation.setLatitude(reservoirsList.get(i).getLat());
-                    secondLocation.setLongitude(reservoirsList.get(i).getLon());
-                    if(distance1 == 0 && distance2 == 0){
-                        distance1 = firstLocation.distanceTo(secondLocation);
-                        distance2 = firstLocation.distanceTo(secondLocation);
-                    }
-                    else {
-                        if (firstLocation.distanceTo(secondLocation) < distance1) {
-                            distance2 = distance1;
-                            distance1 = firstLocation.distanceTo(secondLocation);
-                        } else if (firstLocation.distanceTo(secondLocation) < distance2) {
-                            distance2 = firstLocation.distanceTo(secondLocation);
-                        }
-                    }
-                }
+             shortestDistance();
             }
 
+        });
+
+        //Edit Button run Edit Function
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editReservoir();
+            }
         });
 
     }
@@ -138,17 +122,51 @@ public class Database extends AppCompatActivity {
 
     }
 
-    private void testLocation() {
+    // Search Array list and populate Fields.
+    private void editReservoir(){
 
+        for (int i=0; i<reservoirsList.size();i++){
+            if (reservoirsList.get(i).getName().equals(name_Input.getText().toString())){
+                lat_Input.setText(String.valueOf(reservoirsList.get(i).getLat()));
+                lon_Input.setText(String.valueOf(reservoirsList.get(i).getLon()));
+                lvl_Input.setText(String.valueOf(reservoirsList.get(i).getLvl()));
+                break;
+            }
+        }
+    }
+
+    // Calculate the shortest distance from 2 sets of co-ordinates
+    private void shortestDistance(){
         Location firstLocation = new Location("");
+        Location secondLocation = new Location("");
+
+        // Initially we are using text input boxes to set location - this will be fed on final by map location ( Postcode interface)
         firstLocation.setLatitude(Double.parseDouble(inpLat.getText().toString()));
         firstLocation.setLongitude(Double.parseDouble(inpLon.getText().toString()));
 
-        Location secondLocation = new Location("");
-        secondLocation.setLatitude(reservoirsList.get(1).getLat());
-        secondLocation.setLongitude(reservoirsList.get(1).getLon());
+        // Loop through all database entries and set the shortest distance
+        for (int i = 0; i < reservoirsList.size(); i++) {
+            secondLocation.setLatitude(reservoirsList.get(i).getLat());
+            secondLocation.setLongitude(reservoirsList.get(i).getLon());
+            if(distance1 == 0 && distance2 == 0){
+                distance1 = firstLocation.distanceTo(secondLocation);
+                distance2 = firstLocation.distanceTo(secondLocation);
+                locTracker = i;
+            }
+            else {
+                if (firstLocation.distanceTo(secondLocation) < distance1) {
+                    distance2 = distance1;
+                    distance1 = firstLocation.distanceTo(secondLocation);
+                    locTracker = i;
+                } else if (firstLocation.distanceTo(secondLocation) < distance2) {
+                    distance2 = firstLocation.distanceTo(secondLocation);
+                    locTracker = i;
+                }
+            }
+        }
+        // Temporary message showing the nearest reservoir name
+            Toast.makeText(this, "The nearest Reservoir is: " + reservoirsList.get(locTracker).getName(), Toast.LENGTH_SHORT).show();
+            test.setText(reservoirsList.get(locTracker).getName());
 
-        double temp = firstLocation.distanceTo(secondLocation);
     }
-
 }
