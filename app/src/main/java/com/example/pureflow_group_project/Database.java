@@ -31,10 +31,8 @@ public class Database extends AppCompatActivity {
     TextView test;
     Button add, checkDist, edit;
     ListView myListView;
-
     double distance1 = 0, distance2=0;
     int locTracker=0;
-
     DatabaseReference resdbRef;
     List<Reservoirs> reservoirsList;
 
@@ -76,7 +74,7 @@ public class Database extends AppCompatActivity {
                 String name = name_Input.getText().toString();
                 double lat = Double.parseDouble(lat_Input.getText().toString());
                 double lon = Double.parseDouble(lon_Input.getText().toString());
-                double level = Double.parseDouble(lvl_Input.getText().toString());
+                int level = Integer.parseInt(lvl_Input.getText().toString());
 
                 Reservoirs reservoirs = new Reservoirs(name,lat,lon,level);
                 resdbRef.push().setValue(reservoirs);
@@ -114,6 +112,9 @@ public class Database extends AppCompatActivity {
                 }
                 ListAdapter adapter = new ListAdapter(Database.this, reservoirsList);
                 myListView.setAdapter(adapter);
+
+                for (int i=0;i<reservoirsList.size();i++){
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

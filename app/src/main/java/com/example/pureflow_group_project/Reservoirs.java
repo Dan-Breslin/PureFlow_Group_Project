@@ -4,9 +4,9 @@ public class Reservoirs {
     String name;
     double lat;
     double lon;
-    double lvl;
+    int lvl;
 
-    public Reservoirs(String name, double lat, double lon, double lvl) {
+    public Reservoirs(String name, double lat, double lon, int lvl) {
         this.name = name;
         this.lat = lat;
         this.lon = lon;
@@ -29,7 +29,7 @@ public class Reservoirs {
         return lon;
     }
 
-    public double getLvl() {
+    public int getLvl() {
         return lvl;
     }
 
