@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PureFlow_Group_Project"
         tools:targetApi="31">
         <activity
+            android:name=".navigation"
+            android:exported="false" />
+        <activity
             android:name=".niLinks"
             android:exported="false" />
         <activity
@@ -24,7 +27,7 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Database"
             android:exported="false" />
         <activity
             android:name=".Splash"
@@ -33,7 +36,7 @@
             android:name=".Menu"
             android:exported="false" />
         <activity
-            android:name=".Database"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
