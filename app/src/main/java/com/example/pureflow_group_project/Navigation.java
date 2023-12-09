@@ -55,7 +55,7 @@ public class Navigation extends AppCompatActivity {
         linkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Navigation.this, niLinks.class);
+                Intent intent = new Intent(Navigation.this, Menu.class);
                 startActivity(intent);
             }
         });

@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             Toast.makeText(this,user.getEmail(),Toast.LENGTH_SHORT).show();
             // Open Database Class Page
-            Intent i = new Intent(MainActivity.this, Database.class);
+            Intent i = new Intent(MainActivity.this, Navigation.class);
             startActivity(i);
         }else{
             Toast.makeText(this,"Failed Login",Toast.LENGTH_SHORT).show();
