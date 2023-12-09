@@ -4,6 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".navigation">
+    tools:context=".Navigation">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="194dp"
+        android:layout_height="184dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/home_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pureflowlogo" />
+
+    <Button
+        android:id="@+id/weather_btn"
+        style="@style/FirebaseUI.Button"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="35dp"
+        android:text="Weather"
+        app:layout_constraintBottom_toTopOf="@+id/database_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maps_btn" />
+
+    <Button
+        android:id="@+id/database_btn"
+        style="@style/FirebaseUI.Button"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        android:text="Database"
+        app:layout_constraintBottom_toTopOf="@+id/link_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weather_btn" />
+
+    <Button
+        android:id="@+id/link_btn"
+        style="@style/FirebaseUI.Button"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="51dp"
+        android:text="Links"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/database_btn"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/home_btn"
+        style="@style/FirebaseUI.Button"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="37dp"
+        android:text="Home"
+        app:layout_constraintBottom_toTopOf="@+id/maps_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/maps_btn"
+        style="@style/FirebaseUI.Button"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="39dp"
+        android:text="Map"
+        app:layout_constraintBottom_toTopOf="@+id/weather_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
