@@ -15,14 +15,17 @@ import java.util.List;
 public class ListAdapter extends ArrayAdapter {
 
     private Activity mContext;
+    // Create a list of reservoirs
     List<Reservoirs> reservoirsList;
 
+    // Constructor
     public ListAdapter(Activity mContext, List<Reservoirs> reservoirsList) {
         super(mContext, R.layout.list_item, reservoirsList);
         this.mContext = mContext;
         this.reservoirsList = reservoirsList;
     }
 
+    // Get the view of the list
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

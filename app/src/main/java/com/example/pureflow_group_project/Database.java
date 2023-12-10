@@ -8,7 +8,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +36,7 @@ public class Database extends AppCompatActivity {
     TextView test;
     Button add, checkDist, edit, delete;
     ListView myListView;
-    double distance1 = 0, distance2=0;
+    double distance1 = 0, distance2=0, value=0, value2=0;
     int locTracker=0;
     DatabaseReference resdbRef;
     List<Reservoirs> reservoirsList;
@@ -46,6 +48,8 @@ public class Database extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database);
+        //Inserts Keyboard view restrict into the activity
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         // Arrays & Lists
         reservoirsList = new ArrayList<>();
@@ -69,6 +73,15 @@ public class Database extends AppCompatActivity {
         edit = (Button) findViewById(R.id.btn_EditRes);
         delete = (Button) findViewById(R.id.btn_DelRes);
 
+        // Get Intent from Postcode Locations
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            value = extras.getDouble("my_variable");
+            inpLat.setText(String.valueOf(value));
+            value2 = extras.getDouble("my_variable2");
+            inpLon.setText(String.valueOf(value2));
+        }
+
         // Populate Array with Reservoirs from Firebase Database
         populateResData();
 
@@ -83,7 +96,7 @@ public class Database extends AppCompatActivity {
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
                             if (task.isSuccessful()) {
                                 for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                                    // Remove found snapshot record(s)
+                                    // Update found snapshot record(s)
                                     snapshot.getRef().setValue(new Reservoirs(name_Input.getText().toString(),
                                             Double.parseDouble(lat_Input.getText().toString()),
                                             Double.parseDouble(lon_Input.getText().toString()),
@@ -144,39 +157,44 @@ public class Database extends AppCompatActivity {
                     Reservoirs reservoirs = reservoirsSnapshot.getValue(Reservoirs.class);
                     reservoirsList.add(reservoirs);
                 }
+                if (value != 0 && value2 != 0){
+                    // Run the shortest distance function
+                    shortestDistance();
+                }
+
+                // Populate the list view with the data from the database
                 ListAdapter adapter = new ListAdapter(Database.this, reservoirsList);
                 myListView.setAdapter(adapter);
-
-                for (int i=0;i<reservoirsList.size();i++){
-                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
+        value = 0;
+        value2 = 0;
     }
 
     // Search Array list and populate Fields.
     private void findReservoir(){
 
         //populate the text fields with the data from the database
-
         Query queryByName = resdbRef.orderByChild("name").equalTo(name_Input.getText().toString());
         queryByName.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
+                if (task.getResult().getValue() == null) {
+                    Toast.makeText(Database.this, "Record Not Found ! Edit and try again !", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Database.this, "Record Found !", Toast.LENGTH_SHORT).show();
                     for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                        // Remove found snapshot record(s)
+                        // Populate found snapshot record(s)
                         lat_Input.setText(String.valueOf(snapshot.child("lat").getValue()));
                         lon_Input.setText(String.valueOf(snapshot.child("lon").getValue()));
                         lvl_Input.setText(String.valueOf(snapshot.child("lvl").getValue()));
                         isEdit = true;
+                        //Exit the loop when data entered
                         break;
                     }
-                } else {
-                    Toast.makeText(Database.this, "Record Not Found !", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -184,12 +202,18 @@ public class Database extends AppCompatActivity {
 
     // Calculate the shortest distance from 2 sets of co-ordinates
     private void shortestDistance(){
+
         Location firstLocation = new Location("");
         Location secondLocation = new Location("");
 
         // Initially we are using text input boxes to set location - this will be fed on final by map location ( Postcode interface)
         firstLocation.setLatitude(Double.parseDouble(inpLat.getText().toString()));
         firstLocation.setLongitude(Double.parseDouble(inpLon.getText().toString()));
+
+        //Reset the distance and used variables
+        distance1 = 0;
+        distance2 = 0;
+        locTracker = 0;
 
         // Loop through all database entries and set the shortest distance
         for (int i = 0; i < reservoirsList.size(); i++) {

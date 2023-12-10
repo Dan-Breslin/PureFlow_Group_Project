@@ -6,6 +6,7 @@ public class Reservoirs {
     double lon;
     int lvl;
 
+    // Constructor
     public Reservoirs(String name, double lat, double lon, int lvl) {
         this.name = name;
         this.lat = lat;
@@ -17,6 +18,7 @@ public class Reservoirs {
     public Reservoirs() {
     }
 
+    // Getters
     public String getName() {
         return name;
     }

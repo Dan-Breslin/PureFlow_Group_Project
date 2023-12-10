@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AlternateInputs">
+
+    <Space
+        android:id="@+id/eSpaceTemp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="20dp" />
+
+    <TextView
+        android:id="@+id/weaInst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weather Instances"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/weaInst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eSpaceTemp">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sunny" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Cloudy" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Heavy Rain" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gale force Winds" />
+    </RadioGroup>
+    <Space
+        android:id="@+id/eSpaceTempMid"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        tools:layout_editor_absoluteY="20dp" />
+
+    <TextView
+        android:id="@+id/PstCdetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POSTCODE"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/PstCde"
+        app:layout_constraintEnd_toEndOf="@+id/PstCde"
+        app:layout_constraintTop_toBottomOf="@+id/PstCde" />
+    <Space
+        android:id="@+id/eSpaceTempBot"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/PstCdetxt"
+        tools:layout_editor_absoluteY="20dp" />
+
+    <TextView
+        android:id="@+id/PstCdeLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latitude :"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/PstCdelatRes"
+        app:layout_constraintTop_toTopOf="@+id/PstCdelatRes"
+        app:layout_constraintBottom_toBottomOf="@+id/PstCdelatRes"/>
+
+    <TextView
+        android:id="@+id/PstCdeLon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Longtitude :"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/PstCdelonRes"
+        app:layout_constraintTop_toTopOf="@+id/PstCdelonRes"
+        app:layout_constraintBottom_toBottomOf="@+id/PstCdelonRes" />
+
+    <EditText
+        android:id="@+id/PstCde"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="POSTCODE"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eSpaceTempMid"/>
+    <EditText
+        android:id="@+id/PstCdelatRes"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned|numberDecimal"
+        android:hint="Lat Result"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eSpaceTempBot"/>
+    <EditText
+        android:id="@+id/PstCdelonRes"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned|numberDecimal"
+        android:hint="Lon Result"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PstCdelatRes"/>
+
+    <Button
+        android:id="@+id/btn_RunTest"
+        style="@style/FirebaseUI.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Run Test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PstCdelonRes"
+        />
+
+    <ImageView
+        android:id="@+id/imageViewRes"
+        android:layout_width="210dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_RunTest" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class Menu extends AppCompatActivity {
 
+    // These are the web addresses that will be passed to the niLinks class
     public static final String webAddress = "";
     String serviceURL = "https://www.niwater.com/current-service-updates/";
     String qualityURL ="https://www.niwater.com/water-quality-results/";
@@ -30,6 +31,7 @@ public class Menu extends AppCompatActivity {
         Button linksService, linkQuality,linkProject, linkSelfService, linkWasteCapacity,
                 linkWaterCalc, linkReservoirInfo, linkReservoirMap;
 
+        // This are the buttons that will be used to link to the different websites
         linksService = (Button) findViewById(R.id.btn_LinkServices);
         linkQuality = (Button) findViewById(R.id.btn_LinkQuality);
         linkProject = (Button) findViewById(R.id.btn_LinkProjects);
@@ -39,6 +41,7 @@ public class Menu extends AppCompatActivity {
         linkReservoirInfo = (Button) findViewById(R.id.btn_LinkReservoirInfo);
         linkReservoirMap = (Button) findViewById(R.id.btn_LinkResMap);
 
+        // This are the onClickListeners for the buttons
         linksService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:hint="Reservior Name"
         android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eSpace" />
 
     <EditText
@@ -33,9 +33,9 @@
         android:layout_height="wrap_content"
         android:hint="Latitude"
         android:inputType="numberSigned|numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_EditRes"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eText_ResName"
-        app:layout_constraintBottom_toTopOf="@+id/btn_EditRes"/>
+        app:layout_constraintTop_toBottomOf="@+id/eText_ResName" />
 
     <EditText
         android:id="@+id/eText_Long"
@@ -43,10 +43,10 @@
         android:layout_height="wrap_content"
         android:hint="Longtitude"
         android:inputType="numberSigned|numberDecimal"
-        app:layout_constraintStart_toEndOf="@+id/eText_Lat"
+        app:layout_constraintBottom_toTopOf="@+id/btn_EditRes"
         app:layout_constraintEnd_toStartOf="@id/eText_Levels"
-        app:layout_constraintTop_toBottomOf="@+id/eText_ResName"
-        app:layout_constraintBottom_toTopOf="@+id/btn_EditRes"/>
+        app:layout_constraintStart_toEndOf="@+id/eText_Lat"
+        app:layout_constraintTop_toBottomOf="@+id/eText_ResName" />
 
     <EditText
         android:id="@+id/eText_Levels"
@@ -54,10 +54,10 @@
         android:layout_height="wrap_content"
         android:hint="Res Level"
         android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/btn_EditRes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/eText_Long"
-        app:layout_constraintTop_toBottomOf="@+id/eText_ResName"
-        app:layout_constraintBottom_toTopOf="@+id/btn_EditRes"/>
+        app:layout_constraintTop_toBottomOf="@+id/eText_ResName" />
 
     <Button
         android:id="@+id/btn_InputRes"
@@ -65,9 +65,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
-        app:layout_constraintStart_toEndOf="@id/btn_EditRes"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_EditRes"
         app:layout_constraintTop_toBottomOf="@+id/eText_Levels" />
 
     <Button
@@ -76,11 +76,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find"
-        app:layout_constraintStart_toEndOf="@id/btn_DelRes"
-        app:layout_constraintEnd_toStartOf="@+id/btn_InputRes"
-        app:layout_constraintTop_toBottomOf="@+id/eText_Levels"
         app:layout_constraintBottom_toTopOf="@+id/test"
-        />
+        app:layout_constraintEnd_toStartOf="@+id/btn_InputRes"
+        app:layout_constraintStart_toEndOf="@id/btn_DelRes"
+        app:layout_constraintTop_toBottomOf="@+id/eText_Levels" />
 
     <Button
         android:id="@+id/btn_DelRes"
@@ -88,11 +87,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
+        app:layout_constraintBottom_toTopOf="@+id/test"
         app:layout_constraintEnd_toStartOf="@+id/btn_EditRes"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eText_Levels"
-        app:layout_constraintBottom_toTopOf="@+id/test"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/eText_Levels" />
 
 
     <Button
@@ -101,11 +99,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nearest"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_EditRes"
-        app:layout_constraintBottom_toTopOf="@+id/listView"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/btn_EditRes" />
 
     <TextView
         android:id="@+id/percent"
@@ -113,10 +110,10 @@
         android:layout_height="wrap_content"
         android:text="%"
         android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/eText_Levels"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/eText_Levels"
-        app:layout_constraintTop_toTopOf="@+id/eText_Levels"
-        app:layout_constraintBottom_toBottomOf="@+id/eText_Levels"/>
+        app:layout_constraintTop_toTopOf="@+id/eText_Levels" />
 
     <TextView
         android:id="@+id/test"
@@ -124,31 +121,31 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/testInpLon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/testInpLon"
-        app:layout_constraintTop_toTopOf="@+id/testInpLon"
-        app:layout_constraintBottom_toBottomOf="@+id/testInpLon"/>
+        app:layout_constraintTop_toTopOf="@+id/testInpLon" />
 
     <EditText
         android:id="@+id/testInpLat"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned|numberDecimal"
         android:hint="Lat num"
-        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="numberSigned|numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Search"
         app:layout_constraintEnd_toEndOf="@+id/eText_Lat"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Search"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/testInpLon"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned|numberDecimal"
         android:hint="Lon num"
+        android:inputType="numberSigned|numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Search"
         app:layout_constraintEnd_toEndOf="@+id/eText_Long"
-        app:layout_constraintStart_toEndOf="@+id/testInpLat"
         app:layout_constraintEnd_toStartOf="@id/eText_Levels"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Search"/>
+        app:layout_constraintStart_toEndOf="@+id/testInpLat" />
 
     <ListView
         android:id="@+id/listView"
