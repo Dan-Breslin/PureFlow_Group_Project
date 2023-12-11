@@ -20,9 +20,6 @@
             android:name=".Database"
             android:exported="false" />
         <activity
-            android:name=".Home"
-            android:exported="false" />
-        <activity
             android:name=".Navigation"
             android:exported="false" />
         <activity
@@ -41,7 +38,7 @@
             android:name=".Menu"
             android:exported="false" />
         <activity
-            android:name=".AlternateInputs"
+            android:name=".Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
