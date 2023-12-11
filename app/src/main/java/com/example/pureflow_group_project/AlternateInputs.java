@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +38,11 @@ public class AlternateInputs extends AppCompatActivity {
     private EditText postcodeEditText;
     private TextView resultLat, resultLng;
     double latitudeRes, longitudeRes;
+    RadioGroup radioGroup;
+    private RadioButton radioButton, radioButton2, radioButton3;
+
+
+    int fakeResLvl = 50;
 
 
     @Override
@@ -46,6 +54,10 @@ public class AlternateInputs extends AppCompatActivity {
         resultLat = findViewById(R.id.PstCdelatRes);
         resultLng = findViewById(R.id.PstCdelonRes);
 
+        radioGroup = findViewById(R.id.radioGroup);
+        radioButton = findViewById(R.id.radioButton);
+        radioButton2 = findViewById(R.id.radioButton2);
+        radioButton3 = findViewById(R.id.radioButton3);
 
         getPostcodeLocation = findViewById(R.id.btn_RunTest);
         getPostcodeLocation.setOnClickListener(new View.OnClickListener() {
@@ -60,9 +72,9 @@ public class AlternateInputs extends AppCompatActivity {
                     Toast.makeText(AlternateInputs.this, "Please enter a postcode", Toast.LENGTH_SHORT).show();
                 }
 
-                // open database activity
-//                Intent intent = new Intent(AlternateInputs.this, Database.class);
-//                startActivity(intent);
+                 //open database activity
+                Intent intent = new Intent(AlternateInputs.this, Database.class);
+                startActivity(intent);
             }
         });
     }
@@ -114,8 +126,8 @@ public class AlternateInputs extends AppCompatActivity {
 
                         // Transfer locational data to database activity
                         Intent i = new Intent(AlternateInputs.this, Database.class);
-                        i.putExtra("my_variable",latitudeRes);
-                        i.putExtra("my_variable2",longitudeRes);
+                        i.putExtra("lat_variable",latitudeRes);
+                        i.putExtra("lon_variable",longitudeRes);
                         startActivity(i);
 
                     } else {
@@ -130,5 +142,18 @@ public class AlternateInputs extends AppCompatActivity {
                 Toast.makeText(AlternateInputs.this, "Error fetching data from the server", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void checkButton(View v){
+//Needs fixed
+//      if(radioButton.isChecked() && fakeResLvl<30){
+//        warningPic.setImageResource(R.drawable.conserve);
+//      } else if (radioButton2.isChecked()) {
+//          warningPic.setImageResource(R.drawable.normal);
+//      }else if (radioButton3.isChecked() && fakeResLvl>70){
+//          warningPic.setImageResource(R.drawable.flood);
+//      }else if (radioButton4.isChecked()){
+//          warningPic.setImageResource(R.drawable.flood);
+//      }
     }
 }

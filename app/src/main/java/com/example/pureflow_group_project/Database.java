@@ -1,17 +1,13 @@
 package com.example.pureflow_group_project;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -20,7 +16,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,9 +71,9 @@ public class Database extends AppCompatActivity {
         // Get Intent from Postcode Locations
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            value = extras.getDouble("my_variable");
+            value = extras.getDouble("lat_variable");
             inpLat.setText(String.valueOf(value));
-            value2 = extras.getDouble("my_variable2");
+            value2 = extras.getDouble("lon_variable");
             inpLon.setText(String.valueOf(value2));
         }
 
@@ -126,7 +121,10 @@ public class Database extends AppCompatActivity {
         checkDist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             shortestDistance();
+                // Reset the values if using manual Search
+                value = 0;
+                value2 = 0;
+                shortestDistance();
             }
 
         });
@@ -170,8 +168,6 @@ public class Database extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        value = 0;
-        value2 = 0;
     }
 
     // Search Array list and populate Fields.

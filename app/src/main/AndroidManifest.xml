@@ -32,7 +32,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".AlternateInputs"
+            android:name=".Splash"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -41,7 +41,7 @@
             android:name=".Menu"
             android:exported="false" />
         <activity
-            android:name=".Splash"
+            android:name=".AlternateInputs"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
