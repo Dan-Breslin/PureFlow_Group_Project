@@ -35,9 +35,7 @@ public class Home extends AppCompatActivity {
     RadioGroup radioGroup;
     private RadioButton radioButton, radioButton2, radioButton3;
 
-
     int fakeResLvl = 50;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,17 +135,15 @@ public class Home extends AppCompatActivity {
             }
         }
     }
-
-    private void checkButton(View v){
-//Needs fixed
-//      if(radioButton.isChecked() && fakeResLvl<30){
-//        warningPic.setImageResource(R.drawable.conserve);
-//      } else if (radioButton2.isChecked()) {
-//          warningPic.setImageResource(R.drawable.normal);
-//      }else if (radioButton3.isChecked() && fakeResLvl>70){
-//          warningPic.setImageResource(R.drawable.flood);
-//      }else if (radioButton4.isChecked()){
-//          warningPic.setImageResource(R.drawable.flood);
-//      }
+    private void checkButton(View v) {
+        if (radioButton.isChecked() && fakeResLvl < 30) {
+            warningPic.setImageResource(R.drawable.conserve);
+        } else if (radioButton2.isChecked()) {
+            warningPic.setImageResource(R.drawable.normal);
+        } else if (radioButton3.isChecked() && fakeResLvl > 70) {
+            warningPic.setImageResource(R.drawable.flood);
+        } else if (radioButton4.isChecked()) {
+            warningPic.setImageResource(R.drawable.flood);
+        }
     }
 }
