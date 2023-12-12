@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -34,7 +35,6 @@ public class Home extends AppCompatActivity {
     double latitudeRes, longitudeRes;
     RadioGroup radioGroup;
     private RadioButton radioButton, radioButton2, radioButton3;
-
     int fakeResLvl = 50;
 
     @Override
@@ -70,6 +70,7 @@ public class Home extends AppCompatActivity {
             }
         });
     }
+
     private class GetCoordinatesTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -135,15 +136,15 @@ public class Home extends AppCompatActivity {
             }
         }
     }
-    private void checkButton(View v) {
-        if (radioButton.isChecked() && fakeResLvl < 30) {
-            warningPic.setImageResource(R.drawable.conserve);
-        } else if (radioButton2.isChecked()) {
-            warningPic.setImageResource(R.drawable.normal);
-        } else if (radioButton3.isChecked() && fakeResLvl > 70) {
-            warningPic.setImageResource(R.drawable.flood);
-        } else if (radioButton4.isChecked()) {
-            warningPic.setImageResource(R.drawable.flood);
-        }
-    }
+    //private void checkButton(View v) {
+     //   if (radioButton.isChecked() && fakeResLvl < 30) {
+       //     warningPic.setImageResource(R.drawable.conserve);
+      //  } else if (radioButton2.isChecked()) {
+        //    warningPic.setImageResource(R.drawable.normal);
+       // } else if (radioButton3.isChecked() && fakeResLvl > 70) {
+      //      warningPic.setImageResource(R.drawable.flood);
+       // } else if (radioButton4.isChecked()) {
+       //     warningPic.setImageResource(R.drawable.flood);
+      //  }
+   // }
 }
