@@ -35,7 +35,8 @@ public class Home extends AppCompatActivity {
     double latitudeRes, longitudeRes;
     RadioGroup radioGroup;
     private RadioButton radioButton, radioButton2, radioButton3;
-    int fakeResLvl = 50;
+    ImageView warningPic;
+    int fakeResLvl = 90;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class Home extends AppCompatActivity {
                     Toast.makeText(Home.this, "Please enter a postcode", Toast.LENGTH_SHORT).show();
                 }
 
+                checkButton();
                 //open database activity
                 Intent intent = new Intent(Home.this, Database.class);
                 startActivity(intent);
@@ -99,6 +101,7 @@ public class Home extends AppCompatActivity {
                 return null;
             }
         }
+
         protected void onPostExecute(String result) {
             if (result != null) {
                 try {
@@ -119,8 +122,8 @@ public class Home extends AppCompatActivity {
 
                         // Transfer locational data to database activity
                         Intent i = new Intent(Home.this, Database.class);
-                        i.putExtra("lat_variable",latitudeRes);
-                        i.putExtra("lon_variable",longitudeRes);
+                        i.putExtra("lat_variable", latitudeRes);
+                        i.putExtra("lon_variable", longitudeRes);
                         startActivity(i);
 
                     } else {
@@ -136,15 +139,15 @@ public class Home extends AppCompatActivity {
             }
         }
     }
-    //private void checkButton(View v) {
-     //   if (radioButton.isChecked() && fakeResLvl < 30) {
-       //     warningPic.setImageResource(R.drawable.conserve);
-      //  } else if (radioButton2.isChecked()) {
-        //    warningPic.setImageResource(R.drawable.normal);
-       // } else if (radioButton3.isChecked() && fakeResLvl > 70) {
-      //      warningPic.setImageResource(R.drawable.flood);
-       // } else if (radioButton4.isChecked()) {
-       //     warningPic.setImageResource(R.drawable.flood);
-      //  }
-   // }
+    private void checkButton() {
+        if (radioButton.isChecked() && fakeResLvl < 30) {
+            warningPic.setImageResource(R.drawable.conserve);
+        } else if (radioButton2.isChecked() && fakeResLvl > 70) {
+            warningPic.setImageResource(R.drawable.flood);
+        } else if (radioButton3.isChecked()) {
+            warningPic.setImageResource(R.drawable.flood);
+        } else {
+            warningPic.setImageResource(R.drawable.normal);
+        }
+    }
 }
