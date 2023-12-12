@@ -52,6 +52,8 @@ public class Home extends AppCompatActivity {
         radioButton2 = findViewById(R.id.radioButton2);
         radioButton3 = findViewById(R.id.radioButton3);
 
+        warningPic = findViewById(R.id.imageViewRes);
+
         getPostcodeLocation = findViewById(R.id.btn_RunTest);
         getPostcodeLocation.setOnClickListener(new View.OnClickListener() {
             @Override
