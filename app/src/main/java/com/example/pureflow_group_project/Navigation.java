@@ -43,8 +43,8 @@ public class Navigation extends AppCompatActivity {
         mapbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Navigation.this, MainActivity.class);
-                startActivity(intent);
+                Intent i = new Intent(Navigation.this, MapsActivity.class);
+                startActivity(i);
             }
         });
         weatherbtn.setOnClickListener(new View.OnClickListener() {

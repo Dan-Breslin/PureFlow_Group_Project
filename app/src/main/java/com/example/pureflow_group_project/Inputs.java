@@ -54,12 +54,13 @@ public class Inputs extends AppCompatActivity {
         getPostcodeLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 postCode = postcodeEditText.getText().toString();
                 if (!postCode.isEmpty()) {
                     new GetCoordinatesTask().execute(postCode);
                 } else {
-                    Toast.makeText(Inputs.this, "Please enter a postcode", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Inputs.this, "No PostCode - GPS Used", Toast.LENGTH_SHORT).show();
+                    latitudeRes = MapsActivity.MaplatitudeRes;
+                    longitudeRes = MapsActivity.MaplongitudeRes;
                 }
 
                 checkButton();

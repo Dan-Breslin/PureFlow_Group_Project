@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -39,7 +40,7 @@ public class Database extends AppCompatActivity {
     DatabaseReference resdbRef;
     List<Reservoirs> reservoirsList;
     public static String resName;
-    Boolean isEdit = false;
+    Boolean isEdit = false, newNear = false;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -73,13 +74,13 @@ public class Database extends AppCompatActivity {
         homebtn = (Button) findViewById(R.id.btn_homeStrt);
 
         // Get Intent from Input Location
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            value = extras.getDouble("lat_variable");
-            inpLat.setText(String.valueOf(value));
-            value2 = extras.getDouble("lon_variable");
-            inpLon.setText(String.valueOf(value2));
-        }
+//        Bundle extras = getIntent().getExtras();
+//        if (extras != null) {
+//            value = extras.getDouble("lat_variable");
+//            inpLat.setText(String.valueOf(value));
+//            value2 = extras.getDouble("lon_variable");
+//            inpLon.setText(String.valueOf(value2));
+//        }
 
         // Populate Array with Reservoirs from Firebase Database
         populateResData();
@@ -126,8 +127,7 @@ public class Database extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Reset the values if using manual Search
-                value = 0;
-                value2 = 0;
+                newNear = true;
                 shortestDistance();
             }
 
@@ -156,8 +156,7 @@ public class Database extends AppCompatActivity {
             }
         });
 
-        // Send Chosen reservoir data back to Home Page
-        // Transfer locational data to database activity
+        // Get nearest Reservoirs from Database on Load
     }
     // Insert Reservoirs into Firebase Database
     private void populateResData(){
@@ -169,11 +168,8 @@ public class Database extends AppCompatActivity {
                     Reservoirs reservoirs = reservoirsSnapshot.getValue(Reservoirs.class);
                     reservoirsList.add(reservoirs);
                 }
-                if (value != 0 && value2 != 0){
-                    // Run the shortest distance function
-                    shortestDistance();
-                }
 
+                shortestDistance();
                 // Populate the list view with the data from the database
                 ListAdapter adapter = new ListAdapter(Database.this, reservoirsList);
                 myListView.setAdapter(adapter);
@@ -215,10 +211,14 @@ public class Database extends AppCompatActivity {
 
         Location firstLocation = new Location("");
         Location secondLocation = new Location("");
-
-        // Initially we are using text input boxes to set location - this will be fed on final by map location ( Postcode interface)
-        firstLocation.setLatitude(Double.parseDouble(inpLat.getText().toString()));
-        firstLocation.setLongitude(Double.parseDouble(inpLon.getText().toString()));
+        if (newNear){
+            firstLocation.setLatitude(Double.parseDouble(inpLat.getText().toString()));
+            firstLocation.setLongitude(Double.parseDouble(inpLon.getText().toString()));
+        }else {
+            // Location fed from Either Inputs page or Maps page
+            firstLocation.setLatitude(Inputs.latitudeRes);
+            firstLocation.setLongitude(Inputs.longitudeRes);
+        }
 
         //Reset the distance and used variables
         distance1 = 0;
@@ -251,7 +251,7 @@ public class Database extends AppCompatActivity {
         // Set the global variables to the nearest reservoir details
         resName = reservoirsList.get(locTracker).getName();
         resLvl = reservoirsList.get(locTracker).getLvl();
-
+    newNear = false;
     }
 
     // Delete Reservoir from Firebase Database
