@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class Navigation extends AppCompatActivity {
     Button homebtn;
+    Button inputbtn;
     Button mapbtn;
     Button weatherbtn;
     Button databasebtn;
@@ -20,11 +21,19 @@ public class Navigation extends AppCompatActivity {
         setContentView(R.layout.activity_navigation);
 
         homebtn = (Button) findViewById(R.id.home_btn);
+        inputbtn = (Button) findViewById(R.id.inputs_btn);
         mapbtn = (Button) findViewById(R.id.maps_btn);
         weatherbtn = (Button) findViewById(R.id.weather_btn);
         databasebtn = (Button) findViewById(R.id.database_btn);
         linkbtn = (Button) findViewById(R.id.link_btn);
         homebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Navigation.this, Home.class);
+                startActivity(intent);
+            }
+        });
+        inputbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Navigation.this, Inputs.class);

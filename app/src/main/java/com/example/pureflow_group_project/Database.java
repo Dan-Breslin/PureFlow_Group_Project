@@ -31,14 +31,13 @@ import java.util.List;
 public class Database extends AppCompatActivity {
     EditText name_Input, lat_Input, lon_Input, lvl_Input, inpLat, inpLon;
     TextView test;
-    Button add, checkDist, edit, delete;
+    Button add, checkDist, edit, delete, homebtn;
     ListView myListView;
     double distance1 = 0, distance2=0, value=0, value2=0;
     int locTracker=0;
     public static int resLvl=0;
     DatabaseReference resdbRef;
     List<Reservoirs> reservoirsList;
-    String resPostcode, resWeather;
     public static String resName;
     Boolean isEdit = false;
 
@@ -71,6 +70,7 @@ public class Database extends AppCompatActivity {
         checkDist = (Button) findViewById(R.id.btn_Search);
         edit = (Button) findViewById(R.id.btn_EditRes);
         delete = (Button) findViewById(R.id.btn_DelRes);
+        homebtn = (Button) findViewById(R.id.btn_homeStrt);
 
         // Get Intent from Input Location
         Bundle extras = getIntent().getExtras();
@@ -145,6 +145,14 @@ public class Database extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deleteReservoir();
+            }
+        });
+
+        homebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Database.this, Home.class);
+                startActivity(intent);
             }
         });
 
@@ -243,13 +251,6 @@ public class Database extends AppCompatActivity {
         // Set the global variables to the nearest reservoir details
         resName = reservoirsList.get(locTracker).getName();
         resLvl = reservoirsList.get(locTracker).getLvl();
-
-        Intent i = new Intent(Database.this, Home.class);
-        i.putExtra("Res_Name",resName);
-        i.putExtra("Res_Level",resLvl);
-        i.putExtra("PostCode",resPostcode);
-        i.putExtra("Weather",resWeather);
-        startActivity(i);
 
     }
 
