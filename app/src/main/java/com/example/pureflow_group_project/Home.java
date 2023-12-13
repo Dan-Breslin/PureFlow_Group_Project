@@ -52,6 +52,8 @@ public class Home extends AppCompatActivity {
 
         if (Objects.equals(weather, "Sunny") && lvl < 30) {
             img.setImageResource(R.drawable.conserve);
+        } else if(lvl <30){
+            img.setImageResource(R.drawable.levelslow);
         } else if (Objects.equals(weather, "Rain") && lvl > 80) {
             img.setImageResource(R.drawable.flood);
         } else img.setImageResource(R.drawable.normal);
