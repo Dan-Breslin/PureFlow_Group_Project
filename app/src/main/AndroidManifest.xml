@@ -32,7 +32,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".Inputs"
             android:exported="false" />
         <activity
             android:name=".Login"

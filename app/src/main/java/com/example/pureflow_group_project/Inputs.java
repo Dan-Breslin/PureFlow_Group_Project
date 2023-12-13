@@ -24,7 +24,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Home extends AppCompatActivity {
+public class Inputs extends AppCompatActivity {
 
     // This class may not be used in the final project, it was used to test the alternate inputs
     // & as a backup if we fail to get a map or weather API working
@@ -41,7 +41,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.inputs);
 
         postcodeEditText = findViewById(R.id.PstCde);
         resultLat = findViewById(R.id.PstCdelatRes);
@@ -64,12 +64,12 @@ public class Home extends AppCompatActivity {
                 if (!postcode.isEmpty()) {
                     new GetCoordinatesTask().execute(postcode);
                 } else {
-                    Toast.makeText(Home.this, "Please enter a postcode", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Inputs.this, "Please enter a postcode", Toast.LENGTH_SHORT).show();
                 }
 
                 checkButton();
                 //open database activity
-                Intent intent = new Intent(Home.this, Database.class);
+                Intent intent = new Intent(Inputs.this, Database.class);
                 startActivity(intent);
             }
         });
@@ -123,21 +123,21 @@ public class Home extends AppCompatActivity {
                         resultLng.setText(String.valueOf(longitude));
 
                         // Transfer locational data to database activity
-                        Intent i = new Intent(Home.this, Database.class);
+                        Intent i = new Intent(Inputs.this, Database.class);
                         i.putExtra("lat_variable", latitudeRes);
                         i.putExtra("lon_variable", longitudeRes);
                         startActivity(i);
 
                     } else {
-                        Toast.makeText(Home.this, "Unable to find location", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Inputs.this, "Unable to find location", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(Home.this, "Unable to find location", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Inputs.this, "Unable to find location", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(Home.this, "Error fetching data from the server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Inputs.this, "Error fetching data from the server", Toast.LENGTH_SHORT).show();
             }
         }
     }

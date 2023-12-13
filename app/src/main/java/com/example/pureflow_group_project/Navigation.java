@@ -27,7 +27,7 @@ public class Navigation extends AppCompatActivity {
         homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Navigation.this, MainHome.class);
+                Intent intent = new Intent(Navigation.this, Inputs.class);
                 startActivity(intent);
             }
         });
