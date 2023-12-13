@@ -17,6 +17,9 @@
         android:theme="@style/Theme.PureFlow_Group_Project"
         tools:targetApi="31">
         <activity
+            android:name=".MainHome"
+            android:exported="false" />
+        <activity
             android:name=".Database"
             android:exported="false" />
         <activity
@@ -29,7 +32,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Splash"
+            android:name=".Home"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -38,7 +41,7 @@
             android:name=".Menu"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
