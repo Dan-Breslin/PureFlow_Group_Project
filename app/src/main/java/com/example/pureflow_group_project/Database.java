@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,9 +35,11 @@ public class Database extends AppCompatActivity {
     ListView myListView;
     double distance1 = 0, distance2=0, value=0, value2=0;
     int locTracker=0;
+    public static int resLvl=0;
     DatabaseReference resdbRef;
     List<Reservoirs> reservoirsList;
-
+    String resPostcode, resWeather;
+    public static String resName;
     Boolean isEdit = false;
 
     @SuppressLint("MissingInflatedId")
@@ -51,7 +55,7 @@ public class Database extends AppCompatActivity {
         myListView = findViewById(R.id.listView);
 
         // Firebase Database connection
-       resdbRef = FirebaseDatabase.getInstance("https://pureflow-project-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("Reservoirs");
+        resdbRef = FirebaseDatabase.getInstance("https://pureflow-project-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("Reservoirs");
 
         // Inputs
         name_Input = (EditText) findViewById(R.id.eText_ResName);
@@ -68,7 +72,7 @@ public class Database extends AppCompatActivity {
         edit = (Button) findViewById(R.id.btn_EditRes);
         delete = (Button) findViewById(R.id.btn_DelRes);
 
-        // Get Intent from Postcode Locations
+        // Get Intent from Input Location
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             value = extras.getDouble("lat_variable");
@@ -144,6 +148,8 @@ public class Database extends AppCompatActivity {
             }
         });
 
+        // Send Chosen reservoir data back to Home Page
+        // Transfer locational data to database activity
     }
     // Insert Reservoirs into Firebase Database
     private void populateResData(){
@@ -232,8 +238,18 @@ public class Database extends AppCompatActivity {
             }
         }
         // Temporary message showing the nearest reservoir name
-            Toast.makeText(this, "The nearest Reservoir is: " + reservoirsList.get(locTracker).getName(), Toast.LENGTH_SHORT).show();
-            test.setText(reservoirsList.get(locTracker).getName());
+        Toast.makeText(this, "The nearest Reservoir is: " + reservoirsList.get(locTracker).getName(), Toast.LENGTH_SHORT).show();
+        test.setText(reservoirsList.get(locTracker).getName());
+        // Set the global variables to the nearest reservoir details
+        resName = reservoirsList.get(locTracker).getName();
+        resLvl = reservoirsList.get(locTracker).getLvl();
+
+        Intent i = new Intent(Database.this, Home.class);
+        i.putExtra("Res_Name",resName);
+        i.putExtra("Res_Level",resLvl);
+        i.putExtra("PostCode",resPostcode);
+        i.putExtra("Weather",resWeather);
+        startActivity(i);
 
     }
 

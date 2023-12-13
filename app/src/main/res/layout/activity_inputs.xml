@@ -6,13 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".Inputs">
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="151dp"
+        android:layout_height="159dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pureflowgrouplogo" />
+
     <Space
         android:id="@+id/eSpaceTemp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:visibility="visible"
         tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="20dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"  />
 
     <TextView
         android:id="@+id/weaInst"
@@ -61,7 +72,7 @@
     <Space
         android:id="@+id/eSpaceTempMid"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         tools:layout_editor_absoluteY="20dp" />
@@ -84,26 +95,6 @@
         app:layout_constraintTop_toBottomOf="@+id/PstCdetxt"
         tools:layout_editor_absoluteY="20dp" />
 
-    <TextView
-        android:id="@+id/PstCdeLat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Latitude :"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/PstCdelatRes"
-        app:layout_constraintTop_toTopOf="@+id/PstCdelatRes"
-        app:layout_constraintBottom_toBottomOf="@+id/PstCdelatRes"/>
-
-    <TextView
-        android:id="@+id/PstCdeLon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Longtitude :"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/PstCdelonRes"
-        app:layout_constraintTop_toTopOf="@+id/PstCdelonRes"
-        app:layout_constraintBottom_toBottomOf="@+id/PstCdelonRes" />
-
     <EditText
         android:id="@+id/PstCde"
         android:layout_width="120dp"
@@ -114,45 +105,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eSpaceTempMid"/>
-    <EditText
-        android:id="@+id/PstCdelatRes"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned|numberDecimal"
-        android:hint="Lat Result"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eSpaceTempBot"/>
-    <EditText
-        android:id="@+id/PstCdelonRes"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned|numberDecimal"
-        android:hint="Lon Result"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PstCdelatRes"/>
 
     <Button
         android:id="@+id/btn_RunTest"
         style="@style/FirebaseUI.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Run Test"
+        android:text="Get Inputs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PstCdelonRes"
-        />
-
-    <ImageView
-        android:id="@+id/imageViewRes"
-        android:layout_width="210dp"
-        android:layout_height="60dp"
-        app:srcCompat="@drawable/normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_RunTest" />
+        app:layout_constraintTop_toBottomOf="@+id/PstCde"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

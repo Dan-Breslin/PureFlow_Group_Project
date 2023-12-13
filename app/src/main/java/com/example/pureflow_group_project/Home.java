@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.Objects;
 
-public class MainHome extends AppCompatActivity {
+public class Home extends AppCompatActivity {
     Button btn;
     ImageView img;
     TextView postView, resView, weatherView, lvlView;
@@ -21,7 +21,7 @@ public class MainHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_home);
+        setContentView(R.layout.activity_home);
 
         btn = findViewById(R.id.menu_btn);
         img = findViewById(R.id.imageView6);
@@ -30,13 +30,10 @@ public class MainHome extends AppCompatActivity {
         weatherView = findViewById(R.id.currentweath_txt);
         lvlView = findViewById(R.id.currentlvl_txt);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            res = extras.getString("Res_Name");
-            lvl = extras.getInt("Res_Level");
-            post = extras.getString("PostCode");
-            weather = extras.getString("Weather");
-        }
+        res = Database.resName;
+        lvl = Database.resLvl;
+        post = Inputs.postCode;
+        weather = Inputs.weather;
 
         postView.setText(post);
         resView.setText(res);
@@ -47,7 +44,8 @@ public class MainHome extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainHome.this, Navigation.class);
+
+                Intent intent = new Intent(Home.this, Navigation.class);
                 startActivity(intent);
             }
         });

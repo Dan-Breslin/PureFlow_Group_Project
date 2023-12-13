@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -28,41 +27,37 @@ public class Inputs extends AppCompatActivity {
 
     // This class may not be used in the final project, it was used to test the alternate inputs
     // & as a backup if we fail to get a map or weather API working
-    // Code taken from the internet was used and altered to make this work and to cut down on time as its not the main focus of the project
+
     Button getPostcodeLocation;
     private EditText postcodeEditText;
-    private TextView resultLat, resultLng;
-    double latitudeRes, longitudeRes;
+    public static double latitudeRes, longitudeRes;
     RadioGroup radioGroup;
-    private RadioButton radioButton, radioButton2, radioButton3;
-    ImageView warningPic;
+    private RadioButton radioButton, radioButton2, radioButton3, radioButton4;
     int fakeResLvl = 90;
+    public static String postCode = "", weather = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inputs);
+        setContentView(R.layout.activity_inputs);
 
         postcodeEditText = findViewById(R.id.PstCde);
-        resultLat = findViewById(R.id.PstCdelatRes);
-        resultLng = findViewById(R.id.PstCdelonRes);
-
         radioGroup = findViewById(R.id.radioGroup);
         radioButton = findViewById(R.id.radioButton);
         radioButton2 = findViewById(R.id.radioButton2);
         radioButton3 = findViewById(R.id.radioButton3);
-
-        warningPic = findViewById(R.id.imageViewRes);
+        radioButton4 = findViewById(R.id.radioButton4);
 
         getPostcodeLocation = findViewById(R.id.btn_RunTest);
+
+        postcodeEditText.setText(postCode);
         getPostcodeLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // This is where the code will go to get the location from the postcode
-                // & then use that location to search database for the nearest water source
-                String postcode = postcodeEditText.getText().toString();
-                if (!postcode.isEmpty()) {
-                    new GetCoordinatesTask().execute(postcode);
+
+                postCode = postcodeEditText.getText().toString();
+                if (!postCode.isEmpty()) {
+                    new GetCoordinatesTask().execute(postCode);
                 } else {
                     Toast.makeText(Inputs.this, "Please enter a postcode", Toast.LENGTH_SHORT).show();
                 }
@@ -119,13 +114,10 @@ public class Inputs extends AppCompatActivity {
                         latitudeRes = latitude;
                         longitudeRes = longitude;
 
-                        resultLat.setText(String.valueOf(latitude));
-                        resultLng.setText(String.valueOf(longitude));
-
                         // Transfer locational data to database activity
                         Intent i = new Intent(Inputs.this, Database.class);
-                        i.putExtra("lat_variable", latitudeRes);
-                        i.putExtra("lon_variable", longitudeRes);
+                        i.putExtra("lat_variable",latitudeRes);
+                        i.putExtra("lon_variable",longitudeRes);
                         startActivity(i);
 
                     } else {
@@ -142,14 +134,15 @@ public class Inputs extends AppCompatActivity {
         }
     }
     private void checkButton() {
-        if (radioButton.isChecked() && fakeResLvl < 30) {
-            warningPic.setImageResource(R.drawable.conserve);
-        } else if (radioButton2.isChecked() && fakeResLvl > 70) {
-            warningPic.setImageResource(R.drawable.flood);
+        // Needs fixed
+        if (radioButton.isChecked()) {
+            weather = "Sunny";
+        } else if (radioButton2.isChecked()) {
+            weather = "Cloudy";
         } else if (radioButton3.isChecked()) {
-            warningPic.setImageResource(R.drawable.flood);
-        } else {
-            warningPic.setImageResource(R.drawable.normal);
+            weather = "Rain";
+        } else if (radioButton4.isChecked()) {
+            weather= "Wind";
         }
     }
 }
